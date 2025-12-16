@@ -41,7 +41,7 @@ program
   .command('generate')
   .description('Generate structure markdown')
   .option('--dry-run', 'preview result without writing files')
-  .option('-r, --root <dir>', 'root directory', 'src')
+  .option('-r, --root <dir>', 'root directory', '.')
   .option('-d, --depth <number>', 'max depth', (v) => parseInt(v, 10), Infinity)
   .option('-b, --bullet <symbol>', 'markdown bullet symbol e.g -,├──,*', '├──')
   .option('-o, --output <file>', 'output file', 'STRUCTURE.md')
