@@ -18,9 +18,8 @@ A small, focused CLI tool for turning your project folders into **well‑formatt
 
 ---
 
-## English | [简体中文](./README.zh-CN.md)
+### English | [简体中文](./README.zh-CN.md)
 
----
 
 ## ✨ Features
 
