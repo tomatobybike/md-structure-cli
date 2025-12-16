@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.5](https://github.com/tomatobybike/md-structure/compare/v1.0.4...v1.0.5) (2025-12-16)
+
+
+### Bug Fixes
+
+* 🐛 check root dir ([6871f0b](https://github.com/tomatobybike/md-structure/commit/6871f0b6dcf2ec7c52d7669d18591e5d059a2cb9))
+
 ### [1.0.4](https://github.com/tomatobybike/md-structure/compare/v1.0.3...v1.0.4) (2025-12-16)
 
 
