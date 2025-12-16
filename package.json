@@ -1,6 +1,6 @@
 {
   "name": "md-structure",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate markdown directory structure for README",
   "keywords": [
     "markdown",
@@ -63,7 +63,6 @@
     "commander": "^11.0.0",
     "inquirer": "^13.0.2",
     "semver": "6.3.1",
-
     "is-online": "12.0.2"
   },
   "devDependencies": {
