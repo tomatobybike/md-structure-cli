@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.8](https://github.com/tomatobybike/md-structure/compare/v1.0.7...v1.0.8) (2025-12-17)
+
+
+### Features
+
+* 🎸 @inquirer/prompts ([a227ce1](https://github.com/tomatobybike/md-structure/commit/a227ce158f6ff32a9f98e8638b469d67a6d2a15c))
+
 ### [1.0.7](https://github.com/tomatobybike/md-structure/compare/v1.0.6...v1.0.7) (2025-12-17)
 
 ### [1.0.6](https://github.com/tomatobybike/md-structure/compare/v1.0.5...v1.0.6) (2025-12-17)
