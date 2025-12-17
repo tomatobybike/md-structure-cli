@@ -34,18 +34,18 @@ A small, focused CLI tool for turning your project folders into **well-formatted
 
 ## ✨ Features
 
-- ✅ Cross-platform (Windows / macOS / Linux)
-- 📁 Generate clean, readable Markdown directory trees
-- 🧾 Standard Markdown list output (README & docs friendly)
-- 🎯 Directory-first sorting (folders before files)
-- 📏 Max depth limit (`--depth`)
-- 🔍 Extension filtering (`--only`)
-- 🚫 Directory exclusion (`--exclude`)
-- 🧩 Auto insert into README via markers
-- 🧪 Dry-run preview mode (`--dry-run`)
-- 🤖 Machine-readable JSON output (`--json`)
-- 🩺 Built-in `doctor` self-check command
-- ⚡ Zero runtime dependencies _(except `commander`)_
+* ✅ Cross-platform (Windows / macOS / Linux)
+* 📁 Generate clean, readable Markdown directory trees
+* 🧾 Standard Markdown list output (README & docs friendly)
+* 🎯 Directory-first sorting (folders before files)
+* 📏 Max depth limit (`--depth`)
+* 🔍 Extension filtering (`--only`)
+* 🚫 Directory exclusion (`--exclude`)
+* 🧩 Auto insert into README via markers
+* 🧪 Dry-run preview mode (`--dry-run`)
+* 🤖 Machine-readable JSON output (`--json`)
+* 🩺 Built-in `doctor` self-check command
+* ⚡ Zero runtime dependencies *(except `commander`)*
 
 ---
 
@@ -69,49 +69,125 @@ npx md-structure generate
 
 ## 🚀 Usage
 
-### Generate directory structure
-
 ```bash
-md-structure generate
+md-structure <command> [options]
 ```
 
-## Command options
+---
+
+## Commands
 
 ### generate
 
-| Option | Description | Default |
-|------|-------------|---------|
-| `--dry-run` | Preview result without writing files | `false` |
-| `-s, --stdout` | Output result to stdout instead of file | `false` |
-| `-c, --clipboard` | Copy result to clipboard | `false` |
-| `-r, --root <dir>` | Root directory to scan | `.` |
-| `-d, --depth <number>` | Max directory depth | `Infinity` |
-| `-b, --bullet <symbol>` | Markdown bullet symbol | `├──` |
-| `-o, --output <file>` | Output file | `STRUCTURE.md` |
-| `--only <exts>` | Only include extensions | — |
-| `--exclude <dirs>` | Exclude directories | — |
-| `-i, --insert` | Insert structure into README | `false` |
-| `--start <marker>` | README start marker | `<!-- STRUCTURE_START -->` |
-| `--end <marker>` | README end marker | `<!-- STRUCTURE_END -->` |
+Generate directory structure in Markdown format.
+
+```bash
+md-structure generate [options]
+```
+
+#### Options
+
+| Option                  | Description                             | Default                    |
+| ----------------------- | --------------------------------------- | -------------------------- |
+| `--dry-run`             | Preview result without writing files    | `false`                    |
+| `-s, --stdout`          | Output result to stdout instead of file | `false`                    |
+| `-c, --clipboard`       | Copy result to clipboard                | `false`                    |
+| `-r, --root <dir>`      | Root directory to scan                  | `.`                        |
+| `-d, --depth <number>`  | Max directory depth                     | `Infinity`                 |
+| `-b, --bullet <symbol>` | Markdown bullet symbol                  | `├──`                      |
+| `-o, --output <file>`   | Output file                             | `STRUCTURE.md`             |
+| `--only <exts>`         | Only include extensions                 | —                          |
+| `--exclude <dirs>`      | Exclude directories                     | —                          |
+| `-i, --insert`          | Insert structure into README            | `false`                    |
+| `--start <marker>`      | README start marker                     | `<!-- STRUCTURE_START -->` |
+| `--end <marker>`        | README end marker                       | `<!-- STRUCTURE_END -->`   |
 
 ---
 
-### Preview only (dry run)
+### doctor
+
+Check environment and configuration.
 
 ```bash
-md-structure generate --dry-run
+md-structure doctor [--json]
+```
+
+| Option   | Description                         |
+| -------- | ----------------------------------- |
+| `--json` | Output machine-readable JSON result |
+
+---
+
+### init
+
+Interactive project initialization.
+
+```bash
+md-structure init
+```
+
+* Guides you through creating a default configuration
+* Generates `md-structure.config.json` in the current project
+
+---
+
+## 🧠 Configuration
+
+You can generate a configuration file using:
+
+```bash
+md-structure init
+```
+
+Or create `md-structure.config.json` manually:
+
+```json
+{
+  "root": "src",
+  "depth": Infinity,
+  "only": [".mjs", ".ts"],
+  "exclude": ["node_modules", "dist", "test"],
+  "output": "STRUCTURE.md",
+  "insert": true,
+  "start": "<!-- STRUCTURE_START -->",
+  "end": "<!-- STRUCTURE_END -->"
+}
+```
+
+CLI options always override config values.
+
+---
+
+## 📌 Insert into README
+
+Add markers to your README:
+
+```md
+<!-- STRUCTURE_START -->
+<!-- STRUCTURE_END -->
+```
+
+Then run:
+
+```bash
+md-structure generate --insert
 ```
 
 ---
 
-### JSON output (for CI / scripts)
+## 📤 Stdout & JSON behavior
 
-```bash
-md-structure generate --json
-```
+* `--stdout` outputs only to stdout
+* No files are written in stdout mode
+* `--json` implies quiet, machine-readable output
+
+This makes `md-structure` ideal for:
+
+* CI pipelines
+* Shell scripting
+* Editor or web integrations
 
 ---
-
 ## 📤 Output to stdout (recommended)
 
 By default, `md-structure generate` writes the result to a file
@@ -163,7 +239,6 @@ md-structure generate --stdout --json
 
     -   Editor or Web integrations
 
-
 ---
 
 ## 🧠 Why stdout matters
@@ -181,7 +256,6 @@ By supporting `--stdout`:
 -   Output can be piped, transformed, copied, or stored
 
 -   No assumptions are made about your workflow
-
 
 Examples:
 
@@ -206,79 +280,8 @@ This makes `md-structure` suitable for:
 
 -   AI-assisted workflows
 
-
 `md-structure` generates structure —
 **what you do with it is up to you**.
-
----
-
-## 🩺 Doctor
-
-
-Check environment and configuration.
-
-| Option | Description |
-|------|-------------|
-| `--json` | Output machine-readable JSON result |
-
-
-```bash
-md-structure doctor
-```
-
-Machine-readable output:
-
-```bash
-md-structure doctor --json
-```
-
----
-
-## 🧠 Configuration
-
-Create `md-structure.config.json`:
-
-```json
-{
-  "root": "src",
-  "depth": Infinity,
-  "only": [".mjs", ".ts"],
-  "exclude": ["node_modules", "dist", "test"],
-  "output": "STRUCTURE.md",
-  "insert": true,
-  "start": "<!-- STRUCTURE_START -->",
-  "end": "<!-- STRUCTURE_END -->"
-}
-```
-
-CLI options always override config values.
-
----
-
-## 📌 Insert into README
-
-Add markers to your README:
-
-```md
-<!-- STRUCTURE_START -->
-<!-- STRUCTURE_END -->
-```
-
-Then run:
-
-```bash
-md-structure generate --insert
-```
-
----
-
-## 🤫 Quiet & JSON behavior
-
--   `--json` automatically implies quiet mode
-
--   No banners or extra UI output in machine-readable mode
-
-
 ---
 
 ## 📄 License
